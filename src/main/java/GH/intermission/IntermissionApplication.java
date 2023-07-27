@@ -24,6 +24,7 @@ public class IntermissionApplication {
 		return new BCryptPasswordEncoder();
 	}
 
+	/*
 	@Bean
 	CommandLineRunner run (MemberService memberService){
 		return args -> {
@@ -42,6 +43,6 @@ public class IntermissionApplication {
 			memberService.addRoleToMember("Arnold","ROLE_SUPER_ADMIN");
 			memberService.addRoleToMember("Jim","ROLE_USER");
 		};
-	}
+	}*/
 }
 

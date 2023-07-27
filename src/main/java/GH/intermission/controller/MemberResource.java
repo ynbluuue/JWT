@@ -41,8 +41,10 @@ public class MemberResource {
 
     @PostMapping("/user/save")
     public ResponseEntity<Member>saveMember(@RequestBody Member member){
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/members/save").toUriString());
-        return ResponseEntity.created(uri).body(memberService.saveMember(member));
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/user/save").toUriString());
+        Member saved = memberService.saveMember(member);
+        memberService.addRoleToMember(member.getEmail(), "ROLE_USER");
+        return ResponseEntity.created(uri).body(saved);
     }
 
     @PostMapping("/role/save")
@@ -97,5 +99,5 @@ public class MemberResource {
 @Data
 class RoleToUserForm{
     private String email;
-    private String roleName;
+    private String roleName="ROLE_USER";
 }
